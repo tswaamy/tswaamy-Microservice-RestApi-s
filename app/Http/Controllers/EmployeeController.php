@@ -50,8 +50,8 @@ class EmployeeController extends Controller
     {
         $rules = array(
             'name.*'        => 'Required',
-            'email.*'       => 'Required',
-            'emp_id.*'      => 'Required | integer',
+            'email.*'       => 'Required| email|unique:EmployeeDetail',
+            'emp_id.*'      => 'Required | integer| emp_id|unique:EmployeeDetail',
             'skills.*'      => 'Required',
             'location.*'    => 'Required',
         );

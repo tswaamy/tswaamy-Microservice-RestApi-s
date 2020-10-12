@@ -15,9 +15,9 @@ class CreateEmpDetailsTable extends Migration
     {
         Schema::create('emp_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('emp_id');
+            $table->unsignedInteger('emp_id')->unique();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('skills');
             $table->string('location');
             $table->unsignedInteger('deleted_at')->default('NULL');
