@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 12, 2020 at 12:52 PM
+-- Generation Time: Oct 13, 2020 at 01:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -34,9 +34,9 @@ CREATE TABLE `emp_details` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `skills` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted` int(10) UNSIGNED DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   `status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 = ''Inactive'',1 =''Active''',
-  `deleted` int(10) DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -45,10 +45,10 @@ CREATE TABLE `emp_details` (
 -- Dumping data for table `emp_details`
 --
 
-INSERT INTO `emp_details` (`id`, `emp_id`, `name`, `email`, `skills`, `location`, `status`, `deleted`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 3304, 'Swamy', 'c.thippeswamy@accionlabs.com', 'PHP,Laravel', 'Bangalore', '1', 1, '2020-10-08 07:56:10', '2020-10-08 07:12:46', '2020-10-08 07:56:10'),
-(2, 1001, 'Shiva', 'test1@accionlabs.com', 'PHP,Laravel', 'Bangalore', '1', NULL, NULL, '2020-10-08 07:16:39', '2020-10-08 07:16:39'),
-(3, 1003, 'Sai', 'test2@accionlabs.com', 'Python,AWS', 'Bangalore', '1', NULL, NULL, '2020-10-08 07:16:39', '2020-10-08 07:16:39');
+INSERT INTO `emp_details` (`id`, `emp_id`, `name`, `email`, `skills`, `location`, `deleted`, `deleted_at`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3304, 'Swamy', 'c.thippeswamy@accionlabs.com', 'PHP,Laravel', 'Bangalore', NULL, NULL, '1', '2020-10-13 11:03:28', '2020-10-13 11:03:28'),
+(2, 10031, 'Shiva', 'test1@accionlabs.com', 'PHP,Laravel', 'Bangalore', NULL, NULL, '1', '2020-10-13 11:04:18', '2020-10-13 11:04:18'),
+(3, 10021, 'Sai', 'test2@accionlabs.com', 'Python,AWS', 'Bangalore', NULL, NULL, '1', '2020-10-13 11:04:18', '2020-10-13 11:04:18');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(2, '2020_10_08_044321_create_emp_details_table', 1);
+(3, '2020_10_08_044321_create_emp_details_table', 1);
 
 --
 -- Indexes for dumped tables
@@ -78,8 +78,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 ALTER TABLE `emp_details`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `emp_id` (`emp_id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `emp_details_emp_id_unique` (`emp_id`),
+  ADD UNIQUE KEY `emp_details_email_unique` (`email`);
 
 --
 -- Indexes for table `migrations`
@@ -95,13 +95,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `emp_details`
 --
 ALTER TABLE `emp_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
