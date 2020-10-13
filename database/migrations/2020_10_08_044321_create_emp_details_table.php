@@ -20,8 +20,8 @@ class CreateEmpDetailsTable extends Migration
             $table->string('email')->unique();
             $table->string('skills');
             $table->string('location');
-            $table->unsignedInteger('deleted_at')->default('NULL');
-            $table->dateTime('deleted_at')->default('NULL');
+            $table->unsignedInteger('deleted')->nullable();
+            $table->dateTime('deleted_at')->nullable();
             $table->enum('status',['0','1'])->comment("0 = 'Inactive',1 ='Active'")->default('0');
             $table->timestamps();
         });
