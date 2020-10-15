@@ -77,7 +77,7 @@ class EmployeeController extends Controller
                             ]);
                 }
                DB::commit();
-               return response()->json(["data" => "Created Successfully"], 200);
+               return response()->json(["data" => "Saved Successfully"], 200);
             }
         } catch (ValidationException $e) {
             return response()->json(['errors' => "ErrorFails"], 400);
